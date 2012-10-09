@@ -151,4 +151,25 @@ class TestIntegerSpiral < Test::Unit::TestCase
     )
   end
 
+  def test_raise_on_negative
+    assert_raise ArgumentError do
+      IntegerSpiral.new -1
+    end
+  end
+
+  def test_raise_on_string
+    assert_raise ArgumentError do
+      IntegerSpiral.new "not an integer"
+    end
+  end
+
+  def test_truncate_floats
+    spiral = IntegerSpiral.new 3.4
+    assert_equal(
+      [[0,1],
+       [3,2]],
+      spiral.to_a
+    )
+  end
+
 end

@@ -1,8 +1,9 @@
 class IntegerSpiral
 
   def initialize(n=0)
-    @max = n
-    @dimension = Math.sqrt(n+1).ceil
+    raise ArgumentError, "Please provide an integer greater than or equal to zero" unless n >= 0
+    @max = Integer(n)
+    @dimension = Math.sqrt(@max+1).ceil
     @rows = Array.new(@dimension) { Array.new(@dimension) }
     fill
   end
