@@ -11,6 +11,18 @@ class IntegerSpiral
     @rows
   end
 
+  def to_s
+    padding = @max.to_s.length
+    @rows.select do |row|
+      #Weed out all nil rows
+      !row.all? &:nil?
+    end.map do |row|
+      row.map do |column|
+        column.to_s.rjust(padding)
+      end.join(" ")
+    end.join("\n")
+  end
+
   private
 
   def fill
